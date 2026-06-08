@@ -1,4 +1,20 @@
+import { AssessmentItem, calculateGrade } from "./models/assessment.model";
 
-import { parseStudent } from "./models/student.model";
+const quiz: AssessmentItem = {
+  id: "QUIZ-001",
+  kind: "quiz",
+  title: "SQL Basics",
+  correctAnswers: 8,
+  totalQuestions: 10,
+};
 
-console.log(parseStudent({ id: "STU-001", name: "Hana" }));
+const lab: AssessmentItem = {
+  id: "LAB-001",
+  kind: "lab",
+  title: "REST API Project",
+  functionalityScore: 85,
+  codeQualityScore: 90,
+};
+
+console.log(`Quiz grade: ${calculateGrade(quiz)}%`);//89
+console.log(`Lab grade: ${calculateGrade(lab)}%`);//87
