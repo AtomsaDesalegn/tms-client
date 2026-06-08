@@ -1,20 +1,17 @@
-import { AssessmentItem, calculateGrade } from "./models/assessment.model";
+import { Temporal } from "@js-temporal/polyfill";
+import { EnrollmentStatus, describeEnrollment } from "./models/enrollment.model";
 
-const quiz: AssessmentItem = {
-  id: "QUIZ-001",
-  kind: "quiz",
-  title: "SQL Basics",
-  correctAnswers: 8,
-  totalQuestions: 10,
+// =========================================================
+// 📝 LAB EXERCISE 5: Enrollment Lifecycle State Machine
+// =========================================================
+console.log("\n--- 🏃‍♂️ Running Exercise 5: Enrollment Lifecycle ---");
+
+// Step 3: Test and Break It
+const pending: EnrollmentStatus = {
+  status: "PENDING",
+  requestedAt: Temporal.Now.instant(),
+  studentId: "STU-001",
+  courseId: "CRS-101",
 };
 
-const lab: AssessmentItem = {
-  id: "LAB-001",
-  kind: "lab",
-  title: "REST API Project",
-  functionalityScore: 85,
-  codeQualityScore: 90,
-};
-
-console.log(`Quiz grade: ${calculateGrade(quiz)}%`);//89
-console.log(`Lab grade: ${calculateGrade(lab)}%`);//87
+console.log(describeEnrollment(pending));
